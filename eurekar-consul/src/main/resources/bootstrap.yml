@@ -1,0 +1,49 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: consul-client
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+server:
+  port: 8181
+  #SpringBoot2监控配置
+management:
+  server:
+    #actuator端口
+    port: 9001
+  endpoints:
+    web:
+      exposure:
+        #开放所有页面节点  默认只开启了health、info两个节点
+        include: '*'
+  endpoint:
+    health:
+      #显示健康具体信息  默认不会显示详细信息
+      show-details: always
+---
+spring:
+  profiles: dev
+  cloud:
+    consul:
+      config:
+        enabled: true
+        format: yaml
+        prefix: config
+        profile-separator: ':'
+        data-key: data
+---
+spring:
+  profiles: test
+  cloud:
+    consul:
+      config:
+        enabled: true
+        format: yaml
+        prefix: config
+        profile-separator: ':'
+        data-key: data

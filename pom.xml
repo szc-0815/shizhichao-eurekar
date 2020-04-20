@@ -13,6 +13,7 @@
 
         <module>eurekar-server</module>
         <module>eurekar-client1</module>
+        <module>eurekar-consul</module>
     </modules>
 
 
