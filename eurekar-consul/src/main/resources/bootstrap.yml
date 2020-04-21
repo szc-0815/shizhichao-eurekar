@@ -1,17 +1,4 @@
-spring:
-  profiles:
-    active: dev
-  application:
-    name: consul-client
-  cloud:
-    consul:
-      host: localhost
-      port: 8500
-      discovery:
-        service-name: ${spring.application.name}
-server:
-  port: 8181
-  #SpringBoot2监控配置
+#SpringBoot2监控配置
 management:
   server:
     #actuator端口
@@ -25,25 +12,37 @@ management:
     health:
       #显示健康具体信息  默认不会显示详细信息
       show-details: always
+spring:
+  application:
+    name: consul-client
+  cloud:
+    consul:
+      #连接服务consul服务注册中心
+      host: localhost
+      port: 8500
+      discovery:
+        ##注册到Consul的服务名称，后期客户端会根据这个名称来进行服务调用
+        service-name: consul-client
+  profiles:
+    active: dev
+server:
+  port: 8181
+
+
 ---
 spring:
   profiles: dev
   cloud:
     consul:
       config:
+        #是否启用config配置
         enabled: true
+        #设置配置值的格式
         format: yaml
+        #设置配置所在目录的前缀
         prefix: config
+        #设置配置的分割符
         profile-separator: ':'
+        #配置key的名字  由于consul
         data-key: data
----
-spring:
-  profiles: test
-  cloud:
-    consul:
-      config:
-        enabled: true
-        format: yaml
-        prefix: config
-        profile-separator: ':'
-        data-key: data
+

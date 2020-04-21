@@ -14,6 +14,10 @@
         <module>eurekar-server</module>
         <module>eurekar-client1</module>
         <module>eurekar-consul</module>
+        <module>service-order</module>
+        <module>service-user</module>
+        <module>service-user-interface</module>
+
     </modules>
 
 
