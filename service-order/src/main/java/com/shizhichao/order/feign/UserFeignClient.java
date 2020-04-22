@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
-@FeignClient(name = "service-user")
+@FeignClient(name = "service-user",fallback = UserFeignFallback.class)
 public interface UserFeignClient {
 
     @RequestMapping("/user/getUserById")
