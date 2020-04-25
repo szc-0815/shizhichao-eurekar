@@ -1,11 +1,12 @@
 package com.shizhichao.order.service;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.shizhichao.order.model.Order;
-import org.springframework.stereotype.Service;
 
 
-public interface OrderService {
+
+public interface OrderService extends IService<Order> {
     Order getOrderById(Integer id);
 
 

@@ -25,13 +25,15 @@ public class UserController {
     @RequestMapping("getUserById")
     public User getUserById(@RequestParam("id") Integer id){
         log.info("userId:{}",id);
-        return userService.getUserById(id);
+        return userService.getById(id);
     }
 
     @RequestMapping("getUserByUser")
     public User getUserByUser(@RequestBody User user){
         log.info("userId:{}",user.getId());
-        return userService.getUserById(user.getId());
+
+
+        return userService.getById(user.getId());
     }
 
     /**
@@ -41,6 +43,8 @@ public class UserController {
      */
     @RequestMapping("getUsernameById")
     public String getUsernameById(@RequestParam("id") Integer id){
-        return userService.getUsernameById(id);
+        User u = userService.getById(id);
+
+        return u.getUsername();
     }
 }

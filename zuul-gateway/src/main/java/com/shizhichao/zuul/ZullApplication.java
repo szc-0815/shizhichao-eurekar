@@ -1,15 +1,16 @@
-package com.shizhichao.user;
+package com.shizhichao.zuul;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("com.shizhichao.user.mapper")
-public class ServiceUserApplication {
+@EnableZuulProxy
+public class ZullApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(ServiceUserApplication.class,args);
+        SpringApplication.run(ZullApplication.class,args);
     }
 }
