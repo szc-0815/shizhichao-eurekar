@@ -38,7 +38,7 @@ public class AuthFilter extends ZuulFilter {
     //这里可以写逻辑判断，是否要过滤，true,永远过滤。
     @Override
     public boolean shouldFilter() {
-        return true;
+        return false;
     }
 
     //过滤器的具体逻辑。
