@@ -13,7 +13,8 @@ spring:
           #默认拉取配置Git分支
           default-label: master
           #如果你的Git不公开的，需要设置密码
-          #password:
+          username: szc-0815
+          password: szc5625228
       #从哪个分支去拉去配置文件
       label: spring-cloud-config
 server:
