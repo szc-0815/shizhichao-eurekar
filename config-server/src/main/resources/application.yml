@@ -21,6 +21,10 @@ spring:
 server:
   port: 8888
     #给配置中心统一加访问前缀，在网关配置路由
+<<<<<<< Updated upstream
+=======
+  #上下文，，就是一个前缀，
+>>>>>>> Stashed changes
   servlet:
     context-path: /config/
 

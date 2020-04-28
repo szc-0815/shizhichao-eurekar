@@ -17,6 +17,12 @@
         <module>service-order</module>
         <module>service-user</module>
         <module>service-user-interface</module>
+        <module>zuul-gateway</module>
+        <module>cloud-gateway</module>
+        <module>config-server</module>
+        <module>config-client</module>
+        <module>service-a</module>
+        <module>jpa-demo</module>
 
     </modules>
 
