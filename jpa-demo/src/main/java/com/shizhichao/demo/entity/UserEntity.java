@@ -1,6 +1,8 @@
 package com.shizhichao.demo.entity;
 
 import com.shizhichao.demo.common.DeleteEnum;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,13 +16,16 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "t_user",catalog = "zg5_1708d",schema = "zg5_1708d")
+@ApiModel("用户的实体类")
 public class UserEntity {
     /** 主键的生成策略： IDENTITY、AUTO **/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     //没有被注解的属性，在建表也会生成对应的字段。
+    @ApiModelProperty("用户登录名称")
     private String username;
+    @Column(columnDefinition = "varchar(64) DEFAULT NULL COMMENT '密码'")
     private String password;
     //字段精度设置：precision长度，scale小数的位数
     @Column(precision = 10,scale = 2,columnDefinition = "double(10,2) DEFAULT NULL COMMENT '积分'")

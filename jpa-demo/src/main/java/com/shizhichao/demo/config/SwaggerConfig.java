@@ -20,7 +20,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 // 自行修改为自己的包路径
-                .apis(RequestHandlerSelectors.basePackage("com.d1708.zhanggm.springcloud.jpa.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.shizhichao.demo.jpa.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
