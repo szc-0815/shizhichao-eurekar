@@ -1,9 +1,12 @@
 package com.shizhichao.demo.controller;
 
+import com.shizhichao.demo.entity.OrderEntity;
 import com.shizhichao.demo.entity.UserEntity;
 import com.shizhichao.demo.respository.OrderRepository;
 import com.shizhichao.demo.respository.RoleRepository;
 import com.shizhichao.demo.respository.UserRepository;
+import com.shizhichao.demo.service.OrderService;
+import com.shizhichao.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -32,37 +35,29 @@ public class JpaController {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    OrderService orderService;
+
+
+
     /**
      * 分页接口
      */
-    @RequestMapping("getPageInfo")
+    @RequestMapping("user")
     public Page<UserEntity> getPageInfo(UserEntity userEntity, @RequestParam(defaultValue = "1") Integer pageNum,
                                         @RequestParam(defaultValue = "3") Integer pageSize){
-        //分页
-        Pageable pageable = PageRequest.of(pageNum-1,pageSize);
-        //构建Specification
-        Specification<UserEntity> specification = new Specification() {
-            @Override
-            public Predicate toPredicate(Root root, CriteriaQuery criteriaQuery, CriteriaBuilder cb) {
-                //保存多个查询条件
-                List<Predicate> predicates = new ArrayList<>();
-                //查询字段不为空的时候，添加条件
-                if(userEntity.getUsername()!=null){
-                    //构建条件
-                    Predicate predicate = cb.like(root.get("username"),"%".concat(userEntity.getUsername()).concat("%"));
-                    //添加到predicates
-                    predicates.add(predicate);
-                }
-                //返回的接口
-                return cb.and(predicates.toArray(new Predicate[predicates.size()]));
-            }
-        };
-        return  userRepository.findAll(specification,pageable);
-//        return userRepository.findAll(pageable);
+
+
+        return  userService.getPageInfo(userEntity,pageNum,pageSize);
+
     }
     @RequestMapping("order")
-    public Object getOrderAll(){
-        return orderRepository.findAll();
+    public Page<OrderEntity> order(OrderEntity orderEntity, @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
+                                   @RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize){
+        return orderService.getPageInfo(orderEntity,pageNum,pageSize);
     }
 
     @RequestMapping("role")

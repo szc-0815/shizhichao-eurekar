@@ -32,6 +32,10 @@ public class UserEntity {
     //非数据的映射字段，加Transient注解
     @Transient
     private String classesName;
+
+    @Transient
+    private String orderNo;
+
     //枚举
     @Enumerated(EnumType.ORDINAL)
     private DeleteEnum isDelete;

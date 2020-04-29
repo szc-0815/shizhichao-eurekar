@@ -24,6 +24,10 @@ public class OrderEntity {
     private String orderNo;
     //用户Id
     private Integer userId;
+    //用户名称
+    @Transient
+    private String username;
+
     //创建时间
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
